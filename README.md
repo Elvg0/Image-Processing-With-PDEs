@@ -31,12 +31,19 @@ Here $dt$ represents the time step, $h$ the space step, $n$ the time point and $
 
 The total variation denoising denoising using Rudin-Osher-Fatemi (ROF) PDE, seeks to solve the following minimization problem:
 
-$$\min_{u \in BV( \Omega)} \int_\Omega \|| \nabla u \|| + \frac{\lambda}{2} (f-u)^2dx$$
+$$\min_{u \in BV( \Omega)} \int_\Omega \|| \nabla u \|| + \frac{\lambda}{2} (u-u_0)^2dx$$
 
 Where $BV(\Omega)$ is the set of functions with bounded variation (finite total variation) over the domain. Her $f$ represents the noisy image. Appling the Euler-Lagrange Equation to this functional, we get the PDE:
 
-$$div (\frac{\nabla u}{\|| \nabla u\|| }) + \frac{\lambda}{2} (f-u) = 0 $$
+$$div (\frac{\nabla u}{\|| \nabla u\|| }) + \frac{\lambda}{2} (u-u_0) = 0 $$
 
 We can take the equivalenmt time dependet PDE and iterate over time:
 
-$$u_t =div (\frac{\nabla u}{\|| \nabla u\|| }) + \frac{\lambda}{2} (f-u)$$
+$$u_t =div (\frac{\nabla u}{\|| \nabla u\|| }) + \frac{\lambda}{2} (u-u_0)$$
+
+Discritezing the PDE with forward Euler method and assuming the previous assumptions at the border:
+
+$$u_j^{n+1} = u_j^n + dt \left( \frac{\nabla^+ u}{\sqrt{(\nabla^+ u)^2 + \epsilon^2}} - \frac{\nabla^- u}{\sqrt{(\nabla^- u)^2 + \epsilon^2} } + \lambda (u_j^n - u_{0_j}^n)\right)$$
+
+Where $\nabla^+ u = \frac{u_{j+1}^n-u_j^n}{h}, \nabla^- u = \frac{u_{j}^n-u_{j-1}^n}{h}$ correspond to the forward difference and backward difference operator. The value $\epsilon > 0$ is used to prevent division by 0.
+
