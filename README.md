@@ -27,6 +27,11 @@ $$u_j^{n+1} = u_j^n + dt ( k \frac{u_{j-1}^n -2 u_j^n + u_{j+1}^n}{h^2} + \lambd
 
 Here $dt$ represents the time step, $h$ the space step, $n$ the time point and $j$ the space point. We also have to take into account boundary conditions, where we assume $u(x,t)=0$ in $\partial \Omega$.
 
+
+<p align="center">
+  <img src="images/Heat_denoised_img.png" />
+</p>
+
 ## Total Variation Denoising
 
 The total variation denoising denoising using Rudin-Osher-Fatemi (ROF) PDE, seeks to denoise the image whilst maintaning important details such as edges by solve the following minimization problem:
@@ -48,6 +53,10 @@ $$u_j^{n+1} = u_j^n + dt \left( \frac{\nabla^+ u}{\sqrt{(\nabla^+ u)^2 + \epsilo
 Where $\nabla^+ u = \frac{u_{j+1}^n-u_j^n}{h}, \nabla^- u = \frac{u_{j}^n-u_{j-1}^n}{h}$ correspond to the forward difference and backward difference operator. The value $\epsilon > 0$ is used to prevent division by 0.
 
 
+<p align="center">
+  <img src="images/ROF_denoised_img.png" />
+</p>
+
 ## Anisotropic Diffusion
 
 The anisotropic diffusion or Perona-Malik model, is an image denoising process that is good at preserving important image details as it tends to maintain the edges and lines sharp, contrary to gaussian filtering that tends to blur the edges. The process is defined b:
@@ -66,3 +75,6 @@ The forward Euler discretization is given by:
 
 $$u_j^{n+1} =u_j^n + dt(g(\nabla^+ u)\nabla^+ u - g(\nabla^- u)\nabla^- u)$$
 
+<p align="center">
+  <img src="images/Perona_Malik_denoised_img.png" />
+</p>
