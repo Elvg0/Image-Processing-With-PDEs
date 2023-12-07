@@ -33,7 +33,7 @@ The total variation denoising denoising using Rudin-Osher-Fatemi (ROF) PDE, seek
 
 $$\min_{u \in BV( \Omega)} \int_\Omega \|| \nabla u \|| + \frac{\lambda}{2} (u-u_0)^2dx$$
 
-Where $BV(\Omega)$ is the set of functions with bounded variation (finite total variation) over the domain. Her $f$ represents the noisy image. Appling the Euler-Lagrange Equation to this functional, we get the PDE:
+Where $BV(\Omega)$ is the set of functions with bounded variation (finite total variation) over the domain. Here $u_0$ represents the noisy image. Appling the Euler-Lagrange Equation to this functional, we get the PDE:
 
 $$div (\frac{\nabla u}{\|| \nabla u\|| }) + \frac{\lambda}{2} (u-u_0) = 0 $$
 
