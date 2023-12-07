@@ -37,7 +37,7 @@ Where $BV(\Omega)$ is the set of functions with bounded variation (finite total 
 
 $$div (\frac{\nabla u}{\|| \nabla u\|| }) + \frac{\lambda}{2} (u-u_0) = 0 $$
 
-We can take the equivalenmt time dependet PDE and iterate over time:
+We can take the equivalenmt time dependent PDE and iterate over time:
 
 $$u_t =div (\frac{\nabla u}{\|| \nabla u\|| }) + \frac{\lambda}{2} (u-u_0)$$
 
