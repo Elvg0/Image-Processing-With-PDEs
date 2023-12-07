@@ -32,6 +32,22 @@ Here $dt$ represents the time step, $h$ the space step, $n$ the time point and $
   <img src="images/Heat_denoised_img.png" />
 </p>
 
+## Fourth Order PDE
+
+Simmilarly to the previous method, we can use a higher order linear PDE to denoise the image. This method does a better job at preverving the important characteristics, but it still blurs the image. However, higher order PDEs can be used with other non linear equations to potentially give better results. The 4th order linear PDE is given by:
+
+$$u_t = u_{xxxx} + \lambda(u-u_0)$$
+
+With the same boundary and initial conditions. The forward Euler discretization is given by:
+
+$$u_j^{n+1} = u_j^n + dt(D \frac{u_{j-2}^n -4 u_{j-1}^n + 6 u_j^n - 4 u_{j+1}^n + u_{j+2}^n}{h^4} + \lambda(u_j^n - u_{0_j}^n))$$
+
+<p align="center">
+  <img src="images/4th_denoised_img.png" />
+</p>
+
+
+
 ## Total Variation Denoising
 
 The total variation denoising denoising using Rudin-Osher-Fatemi (ROF) PDE, seeks to denoise the image whilst maintaning important details such as edges by solve the following minimization problem:
@@ -78,3 +94,6 @@ $$u_j^{n+1} =u_j^n + dt(g(\nabla^+ u)\nabla^+ u - g(\nabla^- u)\nabla^- u)$$
 <p align="center">
   <img src="images/PeronaMalik_denoised_img.png" />
 </p>
+
+
+
