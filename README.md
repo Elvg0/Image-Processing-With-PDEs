@@ -29,7 +29,7 @@ Here $dt$ represents the time step, $h$ the space step, $n$ the time point and $
 
 ## Total Variation Denoising
 
-The total variation denoising denoising using Rudin-Osher-Fatemi (ROF) PDE, seeks to solve the following minimization problem:
+The total variation denoising denoising using Rudin-Osher-Fatemi (ROF) PDE, seeks to denoise the image whilst maintaning important details such as edges by solve the following minimization problem:
 
 $$\min_{u \in BV( \Omega)} \int_\Omega \|| \nabla u \|| + \frac{\lambda}{2} (u-u_0)^2dx$$
 
@@ -46,4 +46,23 @@ Discritezing the PDE with forward Euler method and assuming the previous assumpt
 $$u_j^{n+1} = u_j^n + dt \left( \frac{\nabla^+ u}{\sqrt{(\nabla^+ u)^2 + \epsilon}} - \frac{\nabla^- u}{\sqrt{(\nabla^- u)^2 + \epsilon} } + \lambda (u_j^n - u_{0_j}^n)\right)$$
 
 Where $\nabla^+ u = \frac{u_{j+1}^n-u_j^n}{h}, \nabla^- u = \frac{u_{j}^n-u_{j-1}^n}{h}$ correspond to the forward difference and backward difference operator. The value $\epsilon > 0$ is used to prevent division by 0.
+
+
+## Anisotropic Diffusion
+
+The anisotropic diffusion or Perona-Malik model, is an image denoising process that is good at preserving important image details as it tends to maintain the edges and lines sharp, contrary to gaussian filtering that tends to blur the edges. The process is defined b:
+
+$$u_t = div\[g(\nabla u) \nabla u \]$$
+
+$g(\nabla u)$ controls the rate of diffusion and is usually chosen as a function of the image gradient so as to preserve edges in the image. The two functions for $g(\cdot)$ proposed b Pietro Perona and Jitendra Malik are:
+
+$$g(\nabla u) = \frac{1}{1+\left( \frac{\nabla u}{K} \right)^2 }$$
+
+and
+
+$$g(\nabla u) =e^{-\left( \frac{\nabla u}{K} \right)^2} $$
+
+The forward Euler discretization is given by:
+
+$$u_j^{n+1} =u_j^n + dt(g(\nabla^+ u)\nabla^+ u - g(\nabla^- u)\nabla^- u)$$
 
