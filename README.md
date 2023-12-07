@@ -26,3 +26,17 @@ Discretizing the equation with the forward Euler method, as it is simplest, we g
 $$u_j^{n+1} = u_j^n + dt ( k \frac{u_{j-1}^n -2 u_j^n + u_{j+1}^n}{h^2} + \lambda (u_j^n- u_{0_{j}}^n))$$
 
 Here $dt$ represents the time step, $h$ the space step, $n$ the time point and $j$ the space point. We also have to take into account boundary conditions, where we assume $u(x,t)=0$ in $\partial \Omega$.
+
+## Total Variation Denoising
+
+The total variation denoising denoising using Rudin-Osher-Fatemi (ROF) PDE, seeks to solve the following minimization problem:
+
+$$\min_{u \in BV( \Omega)} \int_\Omega \|| \nabla u \|| + \frac{\lambda}{2} (f-u)^2dx$$
+
+Where $BV(\Omega)$ is the set of functions with bounded variation (finite total variation) over the domain. Her $f$ represents the noisy image. Appling the Euler-Lagrange Equation to this functional, we get the PDE:
+
+$$div (\frac{\nabla u}{\|| \nabla u\|| }) + \frac{\lambda}{2} (f-u) = 0 $$
+
+We can take the equivalenmt time dependet PDE and iterate over time:
+
+$$u_t =div (\frac{\nabla u}{\|| \nabla u\|| }) + \frac{\lambda}{2} (f-u)$$
