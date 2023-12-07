@@ -76,5 +76,5 @@ The forward Euler discretization is given by:
 $$u_j^{n+1} =u_j^n + dt(g(\nabla^+ u)\nabla^+ u - g(\nabla^- u)\nabla^- u)$$
 
 <p align="center">
-  <img src="images/Perona_Malik_denoised_img.png" />
+  <img src="images/PeronaMalik_denoised_img.png" />
 </p>
