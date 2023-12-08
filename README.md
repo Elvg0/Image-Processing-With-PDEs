@@ -118,5 +118,17 @@ The circunference represents the evolution of the zero level set using the previ
 
 $$\frac{\varphi_j^{n+1}-\frac{1}{2}(\varphi_{j-1}^n + \varphi_{j+1}^n)}{\Delta t} + v\frac{\varphi_{j-1}^n + \varphi_{j+1}^n}{2h}=0 \iff$$
 $$\iff \varphi_j^{n+1} = \frac{1}{2}(1+\lambda)\varphi_{j-1}^n + \frac{1}{2}(1-\lambda)\varphi_{j+1}^n$$
-With $\lambda = v\frac{\Delta t}{h}$.
 
+With $\lambda = v\frac{\Delta t}{h}$. Now, in order to create motion in the normal direction, we take the velocity field do be a linear combination the normal vector $n =\frac{\nabla \varphi}{\|\varphi\|}$ to $\Gamma$. So taking $v=Fn$ and substituting in the advection equation we get:
+
+$$\varphi_t + F\|\nabla \varphi\|=0 $$
+
+This is due to $\nabla \varphi \cdot \nabla \varphi=\|\nabla \varphi\|^2$. This equation can be discretized by the following process:
+
+$$\varphi_{i,j}^{t+1} = \varphi^{t}_{i,j} + dt \left( \max{(F,0)}G^+\_{i,j} + \min{(F,0)}G^-\_{i,j}\right) $$
+
+With
+
+$$G^+_{i,j} = \left[ \max{(\nabla^-_x,0)}^2+\min{(\nabla^+_x,0)}^2  + \max{(\nabla^-_y,0)}^2+\min{(\nabla^+_y,0)}^2 \right] $$
+
+$$G^-_{i,j} = \left[ \min{(\nabla^-_x,0)}^2+\max{(\nabla^+_x,0)}^2  + \min{(\nabla^-_y,0)}^2+\max{(\nabla^+_y,0)}^2 \right] $$
