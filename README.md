@@ -1,10 +1,7 @@
 # PDE's for Image Processing
 Matlab implementation of partial differential equation (PDE) models for denoising, segmentation and inpainting.
 
-[Heat Equation Denoising](link)
-[Fourth Order PDE](link)
-[Total Variation Denoising](link)
-[Anisotropic Diffusion](link)
+
 
 ## Denoising
 
