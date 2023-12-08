@@ -95,5 +95,17 @@ $$u_j^{n+1} =u_j^n + dt(g(\nabla^+ u)\nabla^+ u - g(\nabla^- u)\nabla^- u)$$
   <img src="images/PeronaMalik_denoised_img.png" />
 </p>
 
+# Segmentation
 
+## Level Set Methods
 
+In order to partition an image into multiple segments, we have to define boundaries on the image. In 1988, James A. Sethian and Stanley Osher proposed to represent these boundaries implicitly and model their propagation using PDEs.
+
+In two dimensions, the level set method consists of representing a curve $\Gamma$ as the zero level set of a some function $\varphi$, called the level set function. Thus $\Gamma$ is defined as:
+$$\Gamma =\\{ (x,y) \| \varphi(x,y)=0\\} $$
+
+Defining $\varphi$ as an evolution PDE, the boundary given by $\Gamma$ is manipulated and evolves throughout the process. To make this work, if we take some velocity field $v$, we can propagate the zero level set using the advection equation:
+
+$$\varphi_t + v \cdot \nabla \varphi=0$$
+
+This can be exemplified by the following circle moving inwards. 
