@@ -1,11 +1,16 @@
 # PDE's for Image Processing
 Matlab implementation of partial differential equation (PDE) models for denoising, segmentation and inpainting.
 
-# [Denoising](link)
+[Heat Equation Denoising](link)
+[Fourth Order PDE](link)
+[Total Variation Denoising](link)
+[Anisotropic Diffusion](link)
+
+## Denoising
 
 In order to enhance the quality of noisy images, diffusion based PDEs may be used. The following models are used and implemented in a 1D signal for simplicity:
 
-## [Heat Equation Denoising](link)
+### Heat Equation Denoising
 
 The linear PDE given by:
 
@@ -32,7 +37,7 @@ Here $dt$ represents the time step, $h$ the space step, $n$ the time point and $
   <img src="images/Heat_denoised_img.png" />
 </p>
 
-## [Fourth Order PDE](link)
+### Fourth Order PDE
 
 Simmilarly to the previous method, we can use a higher order linear PDE to denoise the image. This method does a better job at preverving the important characteristics, but it still blurs the image. However, higher order PDEs can be used with other non linear equations to potentially give better results. The 4th order linear PDE is given by:
 
@@ -48,7 +53,7 @@ $$u_j^{n+1} = u_j^n + dt(D \frac{u_{j-2}^n -4 u_{j-1}^n + 6 u_j^n - 4 u_{j+1}^n 
 
 
 
-## [Total Variation Denoising](link)
+### Total Variation Denoising
 
 The total variation denoising denoising using Rudin-Osher-Fatemi (ROF) PDE, seeks to denoise the image whilst maintaning important details such as edges by solve the following minimization problem:
 
@@ -73,7 +78,7 @@ Where $\nabla^+ u = \frac{u_{j+1}^n-u_j^n}{h}, \nabla^- u = \frac{u_{j}^n-u_{j-1
   <img src="images/ROF_denoised_img.png" />
 </p>
 
-## [Anisotropic Diffusion](link)
+### Anisotropic Diffusion
 
 The anisotropic diffusion or Perona-Malik model, is an image denoising process that is good at preserving important image details as it tends to maintain the edges and lines sharp, contrary to gaussian filtering that tends to blur the edges. The process is defined b:
 
@@ -95,9 +100,9 @@ $$u_j^{n+1} =u_j^n + dt(g(\nabla^+ u)\nabla^+ u - g(\nabla^- u)\nabla^- u)$$
   <img src="images/PeronaMalik_denoised_img.png" />
 </p>
 
-# [Segmentation](link)
+## Segmentation
 
-## Level Set Methods
+### Level Set Methods
 
 In order to partition an image into multiple segments, we have to define boundaries on the image. In 1988, James A. Sethian and Stanley Osher proposed to represent these boundaries implicitly and model their propagation using PDEs.
 
