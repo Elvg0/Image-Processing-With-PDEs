@@ -117,6 +117,7 @@ This can be exemplified by the inward motion of the following circunference.
 The circunference represents the evolution of the zero level set using the previous equation, as the the interior of the circunference has positive gradient and the exterior negative. To achieve a stable motion, the equation was discretized using the Lax-Friedrichs method in two dimentions. The method for the advection equation (in one dimention) is given by:
 
 $$\frac{\varphi_j^{n+1}-\frac{1}{2}(\varphi_{j-1}^n + \varphi_{j+1}^n)}{\Delta t} + v\frac{\varphi_{j-1}^n + \varphi_{j+1}^n}{2h}=0 \iff$$
+
 $$\iff \varphi_j^{n+1} = \frac{1}{2}(1+\lambda)\varphi_{j-1}^n + \frac{1}{2}(1-\lambda)\varphi_{j+1}^n$$
 
 With $\lambda = v\frac{\Delta t}{h}$. Now, in order to create motion in the normal direction, we take the velocity field do be a linear combination the normal vector $n =\frac{\nabla \varphi}{\|\varphi\|}$ to $\Gamma$. So taking $v=Fn$ and substituting in the advection equation we get:
