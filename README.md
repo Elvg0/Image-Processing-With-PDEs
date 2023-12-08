@@ -108,4 +108,15 @@ Defining $\varphi$ as an evolution PDE, the boundary given by $\Gamma$ is manipu
 
 $$\varphi_t + v \cdot \nabla \varphi=0$$
 
-This can be exemplified by the following circle moving inwards. 
+This can be exemplified by the inward motion of the following circunference. 
+
+<p align="center">
+  <img src="images/circlegif.gif" alt="animated" width='250'/>
+</p>
+
+The circunference represents the evolution of the zero level set using the previous equation, as the the interior of the circunference has positive gradient and the exterior negative. To achieve a stable motion, the equation was discretized using the Lax-Friedrichs method in two dimentions. The method for the advection equation (in one dimention) is given by:
+
+$$\frac{\varphi_j^{n+1}-\frac{1}{2}(\varphi_{j-1}^n + \varphi_{j+1}^n)}{\Delta t} + v\frac{\varphi_{j-1}^n + \varphi_{j+1}^n}{2h}=0 \iff$$
+$$\iff \varphi_j^{n+1} = \frac{1}{2}(1+\lambda)\varphi_{j-1}^n + \frac{1}{2}(1-\lambda)\varphi_{j+1}^n$$
+With $\lambda = v\frac{\Delta t}{h}$.
+
