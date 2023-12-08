@@ -7,7 +7,7 @@ Matlab implementation of partial differential equation (PDE) models for denoisin
 
 In order to enhance the quality of noisy images, diffusion based PDEs may be used. The following models are used and implemented in a 1D signal for simplicity:
 
-### Heat Equation Denoising
+### [Heat Equation Denoising](code/heat_denoise.m)
 
 The linear PDE given by:
 
@@ -34,7 +34,7 @@ Here $dt$ represents the time step, $h$ the space step, $n$ the time point and $
   <img src="images/Heat_denoised_img.png" />
 </p>
 
-### Fourth Order PDE
+### [Fourth Order PDE](code/fourth_order_denoise.m)
 
 Simmilarly to the previous method, we can use a higher order linear PDE to denoise the image. This method does a better job at preverving the important characteristics, but it still blurs the image. However, higher order PDEs can be used with other non linear equations to potentially give better results. The 4th order linear PDE is given by:
 
@@ -50,7 +50,7 @@ $$u_j^{n+1} = u_j^n + dt(D \frac{u_{j-2}^n -4 u_{j-1}^n + 6 u_j^n - 4 u_{j+1}^n 
 
 
 
-### Total Variation Denoising
+### [Total Variation Denoising](code/ROF_denoise.m)
 
 The total variation denoising denoising using Rudin-Osher-Fatemi (ROF) PDE, seeks to denoise the image whilst maintaning important details such as edges by solve the following minimization problem:
 
@@ -75,7 +75,7 @@ Where $\nabla^+ u = \frac{u_{j+1}^n-u_j^n}{h}, \nabla^- u = \frac{u_{j}^n-u_{j-1
   <img src="images/ROF_denoised_img.png" />
 </p>
 
-### Anisotropic Diffusion
+### [Anisotropic Diffusion](code/Perona_Malik_denoising.m)
 
 The anisotropic diffusion or Perona-Malik model, is an image denoising process that is good at preserving important image details as it tends to maintain the edges and lines sharp, contrary to gaussian filtering that tends to blur the edges. The process is defined b:
 
