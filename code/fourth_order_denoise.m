@@ -43,14 +43,13 @@ function u = forth_order(u0, h, nt,n, dt, D,lambda)
     t = 1;
     err=5;
     %initiate time loop
-    while (t<nt) && (err>3)
+    while (t<nt)
         v = zeros(n+2,1);
         for i=3:n
             dxxxx = -1/h^4. * (u(i-2,t)-4*u(i-1,t)+6*u(i,t)-4*u(i+1,t)+u(i+2,t));
-            v(i) = (D*(dxxxx/sqrt(dxxxx^2))+lambda*(u0(i)-u(i,t)));
+            v(i) = D*dxxxx+lambda*(u0(i)-u(i,t)));
         end
         %check error
-        err = max(abs(u(:,t)-v));
         u(:,t+1) = u(:,t) + dt*v;
         u(1,t+1)=2;u(2,t+1)=2;u(n+1,t+1)=2;u(n+2,t+1)=2;
         t=t+1;
